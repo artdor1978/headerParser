@@ -73,25 +73,8 @@ app.use(express.static(__dirname + "/public"));
 		utc,
 	});
 }); */
-app.get("/api/:date?", (req, res) => {
-	const dateString = req.params.date;
-	let date;
-	if (!dateString) {
-		date = new Date();
-	} else {
-		if (!isNaN(dateString)) {
-			date = new Date(parseInt(dateString));
-		} else {
-			date = new Date(dateString);
-		}
-	}
-	if (date.toString() === "Invalid Date") {
-		res.json({ error: date.toString() });
-	} else {
-		res.json({ unix: date.getTime(), utc: date.toUTCString() });
-	}
-});
-/* app.get("/api/whoami", function (req, res) {
+
+app.get("/api/whoami", function (req, res) {
 	res.json({
 		ipaddress:
 			req.headers["x-forwarded-for"] ||
@@ -101,8 +84,8 @@ app.get("/api/:date?", (req, res) => {
 		language: req.headers["accept-language"],
 		software: req.header("user-agent"),
 	});
-}); */
-app.get("/api/whoami", (req, res) => {
+}); 
+/* app.get("/api/whoami", (req, res) => {
 	const ipadress = req.clientIp;
 	const language = req.acceptsLanguages();
 	const software = req.get("User - Agent");
@@ -111,7 +94,7 @@ app.get("/api/whoami", (req, res) => {
 		language: language[0],
 		software: software
 	});
-});
+}); */
 //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
 //https://replit.com/@jatinpatel136/boilerplate-project-timestamp
 //https://www.unixtimestamp.com/
